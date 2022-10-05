@@ -1,1 +1,1 @@
-print("nadaeeas21")
+print("nada21")
