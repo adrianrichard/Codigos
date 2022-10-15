@@ -1,8 +1,8 @@
-import tkinter
+import tkinter as tk
 from PIL import ImageTk, Image
 from tkinter.messagebox import showinfo,showerror
 import sqlite3
-master = tkinter.Tk()
+master = tk.Tk()
 master.geometry("385x350")
 def login():
 	# Connect to database
@@ -27,18 +27,18 @@ master.configure(background= bg_color)
 master.title("DentalMatic")
 #---heading image
 photo = ImageTk.PhotoImage(Image.open("LOGO1.png"))
-tkinter.Label(master, image=photo).grid(rowspan = 3, columnspan = 5, row =0,column = 0)
+tk.Label(master, image=photo).grid(rowspan = 3, columnspan = 5, row =0,column = 0)
 # -------username
-tkinter.Label(master,  text="USUARIO", fg=fg_color, bg=bg_color, font=("Helvetica", 15)).grid(row=8, padx=(50, 0), pady=(20, 10))
-lblusername = tkinter.Entry(master)
+tk.Label(master,  text="USUARIO", fg=fg_color, bg=bg_color, font=("Helvetica", 15)).grid(row=8, padx=(50, 0), pady=(20, 10))
+lblusername = tk.Entry(master)
 lblusername.grid(row=8, column=1, padx=(10, 10), pady=(20, 10))
 
 # ----password
-tkinter.Label(master,  text="CONTRASEÑA", fg=fg_color, bg=bg_color, font=("Helvetica", 15)).grid(row=9, padx=(50, 0), pady=(20, 10))
-lblpassword = tkinter.Entry(master)
+tk.Label(master,  text="CONTRASEÑA", fg=fg_color, bg=bg_color, font=("Helvetica", 15)).grid(row=9, padx=(50, 0), pady=(20, 10))
+lblpassword = tk.Entry(master)
 lblpassword.grid(row=9, column=1, padx=(10, 10),pady=(20, 10))
 
 # --------button
-tkinter.Button(master, text="Ingresar",borderwidth=3, relief='ridge', fg=fg_color, bg=bg_color, width = 15, command = login).grid(row = 10,  padx=(50, 0), pady=(20, 10))
+tk.Button(master, text="Ingresar",borderwidth=3, relief='ridge', fg=fg_color, bg=bg_color, width = 15, command = login).grid(row = 10,  padx=(50, 0), pady=(20, 10))
 
 master.mainloop()
