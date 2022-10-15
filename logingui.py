@@ -6,22 +6,27 @@ master = tk.Tk()
 master.geometry("385x350")
 def login():
 	# Connect to database
-	db = sqlite3.connect('login.db')
-	c = db.cursor()
-	username = lblusername.get()
-	password = lblpassword.get()
+	try:
+		db = sqlite3.connect('login.db')
+		c = db.cursor()
+		username = lblusername.get()
+		password = lblpassword.get()
+		c.execute('SELECT * FROM users WHERE username = ? AND password = ?', (username, password))
 
-	c.execute('SELECT * FROM users WHERE username = ? AND password = ?', (username, password))
+		if c.fetchall():
+			showinfo(title = "Ingreso", message = "Ingreso autorizado")
+		else:
+			showerror(title = "Advertencia", message = "Usuario o contraseña incorrectos")
 
-	if c.fetchall():
-		showinfo(title = "success", message = "Username and password correct")
-	else:
-		showerror(title = "warning", message = "incorrect username or password")
+		c.close()	
+	
+	except:
+		showerror(title = "Advertencia", message = "Error de conexión a base de datos")
 
-	c.close()
+	
 
 
-bg_color = "Green"
+bg_color = "#5c8665"
 fg_color = "black"
 master.configure(background= bg_color)
 master.title("DentalMatic")
@@ -36,6 +41,7 @@ lblusername.grid(row=8, column=1, padx=(10, 10), pady=(20, 10))
 # ----password
 tk.Label(master,  text="CONTRASEÑA", fg=fg_color, bg=bg_color, font=("Helvetica", 15)).grid(row=9, padx=(50, 0), pady=(20, 10))
 lblpassword = tk.Entry(master)
+lblpassword['show']='*'
 lblpassword.grid(row=9, column=1, padx=(10, 10),pady=(20, 10))
 
 # --------button
