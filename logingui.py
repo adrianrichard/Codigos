@@ -36,7 +36,7 @@ root.title("DentalMatic")
 photo = ImageTk.PhotoImage(Image.open("./Imagenes/LOGO1.png"))
 tk.Label(root, image=photo).grid(rowspan = 3, columnspan = 5, row =0,column = 0)
 # -------username
-tk.Label(root,  text="USUARIO", fg=fg_color, bg=bg_color, font=("Helvetica", 15)).grid(row=8, padx=(50, 0), pady=(20, 10))
+tk.Label(root,  text="Usuario", fg=fg_color, bg=bg_color, font=("Helvetica", 15)).grid(row=8, padx=(50, 0), pady=(20, 10))
 getusername = tk.Entry(root)
 #separar el Entry del grid porque sino no funciona
 getusername.grid(row=8, column=1, padx=(10, 10), pady=(20, 10))
