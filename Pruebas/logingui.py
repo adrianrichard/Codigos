@@ -5,7 +5,7 @@ import sqlite3
 root = tk.Tk()
 root.geometry("385x350")
 root.resizable(width=False, height=False)#para que no puedan modificar el tamaño
-
+import main as m
 def login():
 	# Connect to database
 	try:
@@ -14,9 +14,11 @@ def login():
 		username = getusername.get()
 		password = getpassword.get()
 		c.execute('SELECT * FROM users WHERE username = ? AND password = ?', (username, password))
-
+		
 		if c.fetchall():
 			showinfo(title = "Ingreso", message = "Ingreso autorizado")
+			root.destroy()
+			
 		else:
 			showerror(title = "Advertencia", message = "Usuario o contraseña incorrectos")
 
@@ -24,9 +26,6 @@ def login():
 	
 	except:
 		showerror(title = "Advertencia", message = "Error de conexión a base de datos")
-
-	
-
 
 bg_color = "#03592f"
 fg_color = "black"
@@ -43,7 +42,7 @@ getusername.grid(row=8, column=1, padx=(10, 10), pady=(20, 10))
 
 # ----password
 tk.Label(root,  text="PASSWORD", fg=fg_color, bg=bg_color, font=("Helvetica", 15)).grid(row=9, padx=(50, 0), pady=(20, 10))
-getpassword = tk.Entry(root, show='*')
+getpassword = tk.Entry(root, show='●')
 #separa el Entry del grid porque sino no funciona
 getpassword.grid(row=9, column=1, padx=(10, 10),pady=(20, 10))
 

@@ -153,7 +153,7 @@ class Ventana(Frame):
 		Label(self.frame_menu, text= 'Registrar', bg= 'black', fg= 'DarkOrchid1', font= ('Lucida Sans', 12, 'bold')).grid(column=1, row=2, pady=20, padx=2)
 		Label(self.frame_menu, text= ' Actualizar', bg= 'black', fg= 'DarkOrchid1', font= ('Lucida Sans', 12, 'bold')).grid(column=1, row=3, pady=20, padx=2)
 		Label(self.frame_menu, text= 'Eliminar', bg= 'black', fg= 'DarkOrchid1', font= ('Lucida Sans', 12, 'bold')).grid(column=1, row=4, pady=20, padx=2)
-		Label(self.frame_menu, text= 'Ajustes', bg= 'black', fg= 'DarkOrchid1', font= ('Lucida Sans', 12, 'bold')).grid(column=1, row=5, pady=20, padx=2)
+		Label(self.frame_menu, text= 'Versión', bg= 'black', fg= 'DarkOrchid1', font= ('Lucida Sans', 12, 'bold')).grid(column=1, row=5, pady=20, padx=2)
 
 
 		#############################  CREAR  PAGINAS  ##############################
@@ -168,8 +168,8 @@ class Ventana(Frame):
 		#CREACCION DE LAS PAGINAS
 		self.paginas = ttk.Notebook(self.frame_principal , style= 'TNotebook') #, style = 'TNotebook'
 		self.paginas.grid(column=0,row=0, sticky='nsew')
-		self.frame_uno = Frame(self.paginas, bg='DarkOrchid1')
-		self.frame_dos = Frame(self.paginas, bg='white')
+		self.frame_uno = Frame(self.paginas, bg='white') #color de fondo
+		self.frame_dos = Frame(self.paginas, bg='white') #color de fondo
 		self.frame_tres = Frame(self.paginas, bg='white')
 		self.frame_cuatro = Frame(self.paginas, bg='white')
 		self.frame_cinco = Frame(self.paginas, bg='white')
@@ -185,7 +185,7 @@ class Ventana(Frame):
 		##############################         PAGINAS       #############################################
 
 		######################## FRAME TITULO #################
-		self.titulo = Label(self.frame_top,text= 'APLICACION DE ESCRITORIO EN PYTHON CON TKINTER', bg='black', fg= 'DarkOrchid1', font= ('Imprint MT Shadow', 15, 'bold'))
+		self.titulo = Label(self.frame_top,text= 'Consultorio Odóntologico MyM', bg='black', fg= 'DarkOrchid1', font= ('Imprint MT Shadow', 15, 'bold'))
 		self.titulo.pack(expand=1)
 
 		######################## VENTANA PRINCIPAL #################
@@ -234,7 +234,7 @@ class Ventana(Frame):
 #		self.tabla_uno.bind("<<TreeviewSelect>>", self.obtener_fila)
 
 		######################## REGISTRAR  NUEVOS PRODUCTOS #################
-		Label(self.frame_tres, text = 'Agregar Nuevos Datos',fg='purple', bg ='white', font=('Kaufmann BT',24,'bold')).grid(columnspan=2, column=0,row=0, pady=5)
+		Label(self.frame_tres, text = 'Agregar Nuevos Datos',fg='blue', bg ='white', font=('Kaufmann BT',24,'bold')).grid(columnspan=2, column=0,row=0, pady=5)
 		Label(self.frame_tres, text = 'Codigo',fg='navy', bg ='white', font=('Rockwell',13,'bold')).grid(column=0,row=1, pady=15, padx=5)
 		Label(self.frame_tres, text = 'Nombre',fg='navy', bg ='white', font=('Rockwell',13,'bold')).grid(column=0,row=2, pady=15)
 		Label(self.frame_tres, text = 'Modelo',fg='navy', bg ='white', font=('Rockwell',13,'bold')).grid(column=0,row=3, pady=15)
@@ -253,7 +253,7 @@ class Ventana(Frame):
 		self.aviso_guardado.grid(columnspan= 2 , column =0, row = 6, padx= 5)
 
 		########################   ACTUALIZAR LOS PRODUCTOS REGISTRADOS     #################
-		Label(self.frame_cuatro, text = 'Actualizar Datos',fg='purple', bg ='white', font=('Kaufmann BT',24,'bold')).grid(columnspan=4, row=0)
+		Label(self.frame_cuatro, text = 'Actualizar Datos',fg='blue', bg ='white', font=('Kaufmann BT',24,'bold')).grid(columnspan=4, row=0)
 		Label(self.frame_cuatro, text = 'Ingrese el nombre del producto a actualizar',fg='black', bg ='white', font=('Rockwell',12)).grid(columnspan=2,row=1)
 		Entry(self.frame_cuatro, textvariable= self.buscar_actualiza , font=('Comic Sans MS', 12), highlightbackground = "magenta2", width=12, highlightthickness=5).grid(column=2,row=1, padx=5)
 		#Button(self.frame_cuatro, command= self.actualizar_datos, text='BUSCAR', font=('Arial',12,'bold'), bg='deep sky blue').grid(column=3,row=1, pady=5, padx=15)
@@ -276,11 +276,11 @@ class Ventana(Frame):
 		Label(self.frame_cuatro, image= self.imagen_dos, bg='white').grid(column= 2,columnspan= 2, rowspan= 5, row = 1, padx=2)
 
 		######################## BUSCAR y ELIMINAR DATOS #################
-		Label(self.frame_cinco, text = 'Buscar y Eliminar Datos',fg='purple', bg ='white', font=('Kaufmann BT',24,'bold')).grid(columnspan= 4,  row=0,sticky='nsew',padx=2)
+		Label(self.frame_cinco, text = 'Buscar y Eliminar Datos',fg='blue', bg ='white', font=('Kaufmann BT',24,'bold')).grid(columnspan= 4,  row=0,sticky='nsew',padx=2)
 		Entry(self.frame_cinco, textvariable= self.buscar , font=('Comic Sans MS', 12),highlightbackground = "DarkOrchid1", highlightcolor= "deep sky blue", highlightthickness=5).grid(column=0,row=1,sticky='nsew', padx=2)
 		#Button(self.frame_cinco,command = self.buscar_nombre, text='BUSCAR POR NOMBRE', font=('Arial',8,'bold'), bg='deep sky blue').grid(column = 1, row=1, sticky='nsew', padx=2)
 		#Button(self.frame_cinco,command = self.eliminar_fila, text='ELIMINAR', font=('Arial',8,'bold'), bg='red').grid(column = 2, row=1, sticky='nsew',padx=2)
-		self.indica_busqueda= Label(self.frame_cinco, width= 15,text = '',fg='purple', bg ='white', font=('Arial',12,'bold'))
+		self.indica_busqueda= Label(self.frame_cinco, width= 15,text = '',fg='blue', bg ='white', font=('Arial',12,'bold'))
 		self.indica_busqueda.grid(column = 3,  row=1,padx=2)
 
 		#TABLA DOS
@@ -311,7 +311,7 @@ class Ventana(Frame):
 
 
 		######################## AJUSTES #################
-		self.text_ajustes = Label(self.frame_seis, text = 'Configuracion',fg='purple', bg ='white', font=('Kaufmann BT',28,'bold'))
+		self.text_ajustes = Label(self.frame_seis, text = 'Configuracion',fg='blue', bg ='white', font=('Kaufmann BT',28,'bold'))
 		self.text_ajustes.pack(expand=1)
 		self.bt_color = Button(self.frame_seis, image = self.noche , command= self.cambiar_color, bg = 'white', bd=0, activebackground='white')
 		self.bt_color.pack(expand=1)
@@ -330,46 +330,6 @@ if __name__ == "__main__":
 	#ventana.call('wm', 'iconphoto', ventana._w, PhotoImage(file='logo.png'))
 	app = Ventana(ventana)
 	app.mainloop()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 """
