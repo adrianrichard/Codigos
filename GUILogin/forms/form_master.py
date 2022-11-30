@@ -16,7 +16,7 @@ class MasterPanel:
         self.ventana.geometry('1000x500+180+80')
         self.ventana.config(bg='#fcfcfc')
         self.ventana.resizable(width=0, height=0)
-        utl.centrar_ventana(self.ventana,800,500)            
+        utl.centrar_ventana(self.ventana,900,600)            
         self.menu = True
         self.color = True
         self.codigo = StringVar()
@@ -110,36 +110,30 @@ class MasterPanel:
 
     def cambiar_color(self):
         if self.color == True:
-            self.bt_color['image'] = self.dia
             self.titulo.config(fg='deep sky blue')
             self.frame_seis.config(bg= 'black')
             self.text_ajustes.config(bg='black')
-            self.texto.config(bg='black')
-            self.bt_color.config(bg='black',activebackground='black')
+            self.texto.config(bg='black')            
             self.color = False
-        else:
-            self.bt_color['image'] = self.noche
+        else:            
             self.titulo.config(fg='DarkOrchid1')
             self.frame_seis.config(bg= 'white')
             self.text_ajustes.config(bg='white')
-            self.texto.config(bg='white')
-            self.bt_color.config(bg='white',activebackground='white')
+            self.texto.config(bg='white')            
             self.color = True
 
     def widgets(self):
-        self.imagen_inicio = PhotoImage(file ='inicio.png')
-        self.imagen_menu = PhotoImage(file ='menu.png')
-        self.imagen_datos = PhotoImage(file ='datos.png')
-        self.imagen_registrar = PhotoImage(file ='escribir.png')
-        self.imagen_actualizar = PhotoImage(file ='actualizar.png')
-        self.imagen_buscar = PhotoImage(file ='buscar.png')
-        self.imagen_ajustes = PhotoImage(file ='configuracion.png')
+        self.imagen_inicio = PhotoImage(file ='./GUILogin/imagenes/inicio.png')
+        self.imagen_menu = PhotoImage(file ='./GUILogin/imagenes/menu.png')
+        self.imagen_datos = PhotoImage(file ='./GUILogin/imagenes/datos.png')
+        self.imagen_registrar = PhotoImage(file ='./GUILogin/imagenes/escribir.png')
+        self.imagen_actualizar = PhotoImage(file ='./GUILogin/imagenes/actualizar.png')
+        self.imagen_buscar = PhotoImage(file ='./GUILogin/imagenes/buscar.png')
+        self.imagen_ajustes = PhotoImage(file ='./GUILogin/imagenes/configuracion.png')
 
-        self.logo = PhotoImage(file ='logo1.png')
-        self.imagen_uno = PhotoImage(file ='imagen_uno.png')
-        self.imagen_dos= PhotoImage(file ='imagen_dos.png')
-        self.dia = PhotoImage(file ='dia.png')
-        self.noche= PhotoImage(file ='noche.png')
+        self.logo = PhotoImage(file ='./GUILogin/imagenes/logo1.png')
+        self.imagen_uno = PhotoImage(file ='./GUILogin/imagenes/imagen_uno.png')
+        self.imagen_dos= PhotoImage(file ='./GUILogin/imagenes/imagen_dos.png')        
 
         self.bt_inicio = Button(self.frame_inicio, image= self.imagen_inicio, bg='black',activebackground='black', bd=0, command = self.menu_lateral)
         self.bt_inicio.grid(column=0, row=0, padx=5, pady=10)
@@ -153,20 +147,20 @@ class MasterPanel:
         Button(self.frame_menu, image= self.imagen_buscar, bg= 'black',activebackground='black', bd=0, command = self.pantalla_buscar).grid(column=0, row=4, pady=20,padx=10)
         Button(self.frame_menu, image= self.imagen_ajustes, bg= 'black',activebackground='black', bd=0, command = self.pantalla_ajustes).grid(column=0, row=5, pady=20,padx=10)
 
-        Label(self.frame_menu, text= 'Base Datos', bg= 'black', fg= 'DarkOrchid1', font= ('Lucida Sans', 12, 'bold')).grid(column=1, row=1, pady=20, padx=2)
-        Label(self.frame_menu, text= 'Registrar', bg= 'black', fg= 'DarkOrchid1', font= ('Lucida Sans', 12, 'bold')).grid(column=1, row=2, pady=20, padx=2)
-        Label(self.frame_menu, text= ' Actualizar', bg= 'black', fg= 'DarkOrchid1', font= ('Lucida Sans', 12, 'bold')).grid(column=1, row=3, pady=20, padx=2)
-        Label(self.frame_menu, text= 'Eliminar', bg= 'black', fg= 'DarkOrchid1', font= ('Lucida Sans', 12, 'bold')).grid(column=1, row=4, pady=20, padx=2)
-        Label(self.frame_menu, text= 'Versión', bg= 'black', fg= 'DarkOrchid1', font= ('Lucida Sans', 12, 'bold')).grid(column=1, row=5, pady=20, padx=2)
+        Label(self.frame_menu, text= 'Base Datos', bg= 'black', fg= 'white', font= ('Lucida Sans', 12, 'bold')).grid(column=1, row=1, pady=20, padx=2)
+        Label(self.frame_menu, text= 'Registrar', bg= 'black', fg= 'white', font= ('Lucida Sans', 12, 'bold')).grid(column=1, row=2, pady=20, padx=2)
+        Label(self.frame_menu, text= ' Actualizar', bg= 'black', fg= 'white', font= ('Lucida Sans', 12, 'bold')).grid(column=1, row=3, pady=20, padx=2)
+        Label(self.frame_menu, text= 'Eliminar', bg= 'black', fg= 'white', font= ('Lucida Sans', 12, 'bold')).grid(column=1, row=4, pady=20, padx=2)
+        Label(self.frame_menu, text= 'Versión', bg= 'black', fg= 'white', font= ('Lucida Sans', 12, 'bold')).grid(column=1, row=5, pady=20, padx=2)
 
 		#############################  CREAR  PAGINAS  ##############################
         estilo_paginas = ttk.Style()
-        estilo_paginas.configure("TNotebook", background='black', foreground='black', padding=0, borderwidth=0)
+        estilo_paginas.configure("TNotebook", background='black', foreground='gray', padding=0, borderwidth=0)
         estilo_paginas.theme_use('default')
         estilo_paginas.configure("TNotebook", background='black', borderwidth=0)
         estilo_paginas.configure("TNotebook.Tab", background="black", borderwidth=0)
         estilo_paginas.map("TNotebook", background=[("selected", 'black')])
-        estilo_paginas.map("TNotebook.Tab", background=[("selected", 'black')], foreground=[("selected", 'black')]);
+        estilo_paginas.map("TNotebook.Tab", background=[("selected", 'black')], foreground=[("selected", 'gray')]);
 
 		#CREACCION DE LAS PAGINAS
         self.paginas = ttk.Notebook(self.frame_principal , style= 'TNotebook') #, style = 'TNotebook'
@@ -186,11 +180,11 @@ class MasterPanel:
 
 		##############################         PAGINAS       #############################################
 		######################## FRAME TITULO #################
-        self.titulo = Label(self.frame_top,text= 'Consultorio Odóntologico MyM', bg='black', fg= 'DarkOrchid1', font= ('Imprint MT Shadow', 15, 'bold'))
+        self.titulo = Label(self.frame_top,text= 'Consultorio Odóntologico MyM', bg='black', fg= 'white', font= ('Imprint MT Shadow', 15, 'bold'))
         self.titulo.pack(expand=1)
 
 		######################## VENTANA PRINCIPAL #################
-        Label(self.frame_uno, text= 'Electrónica Programación y Tecnología', bg='DarkOrchid1', fg= 'white', font= ('Freehand521 BT', 20, 'bold')).pack(expand=1)
+        Label(self.frame_uno, text= 'Menú Principal', bg='white', fg= 'black', font= ('Freehand521 BT', 20, 'bold')).pack(expand=1)
         Label(self.frame_uno ,image= self.logo, bg='DarkOrchid1').pack(expand=1)
 
 		######################## MOSTRAR TODOS LOS PRODUCTOS DE LA BASE DE DATOS MYSQL #################
@@ -308,7 +302,6 @@ class MasterPanel:
 		######################## AJUSTES #################
         self.text_ajustes = Label(self.frame_seis, text = 'Configuracion',fg='blue', bg ='white', font=('Kaufmann BT',28,'bold'))
         self.text_ajustes.pack(expand=1)
-        self.bt_color = Button(self.frame_seis, image = self.noche , command= self.cambiar_color, bg = 'white', bd=0, activebackground='white')
         self.bt_color.pack(expand=1)
         self.texto = Label(self.frame_seis, text = '@autor:Magno Efren \n Desarrollado en Python',fg='red', bg ='white', font=('Kaufmann BT',18))
         self.texto.pack(expand=1)
