@@ -6,8 +6,7 @@ from tkinter import  StringVar,Scrollbar,Frame
 #from conexion import*
 import time
 
-class MasterPanel:
-    
+class MasterPanel:    
                                       
     def __init__(self):        
         self.ventana = tk.Tk()                             

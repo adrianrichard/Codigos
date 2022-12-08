@@ -4,42 +4,32 @@ from tkinter.font import BOLD
 import util.generic as utl
 from forms.form_master import MasterPanel
 from tkinter.messagebox import showinfo,showerror
-
+from bd.conexion import Conexion
 import sqlite3
 class App:
         
     def verificar(self):
         username = self.usuario.get()
         password = self.password.get()
-        print(username)
+        
         try:
-            db = sqlite3.connect('./GUILogin/forms/consultorio.sqlite3')
-            c = db.cursor()
-            c.execute('SELECT Nombre_usuario, Clave FROM Usuarios WHERE Nombre_usuario = ? AND Clave = ?', (username, password))
-		
-            if c.fetchall():
+            db = Conexion()
+
+            if db.buscar_usuario(username, password):
                 showinfo(title = "Ingreso", message = "Ingreso autorizado")
                 self.ventana.destroy()
                 MasterPanel()
-            #root.destroy()			
             else:
                 showerror(title = "Advertencia", message = "Usuario o contraseña incorrectos")
-            c.close()	
+            db.cerrar_bd()	
 	
         except:
             showerror(title = "Advertencia", message = "Error de conexión a base de datos")
-        
-        '''if(usu == "root" and password == "1234") :
-            self.ventana.destroy()
-            MasterPanel()
-        else:
-            messagebox.showerror(message="La contraseña no es correcta", title="Mensaje")           
-        '''              
+                        
     def __init__(self):        
         self.ventana = tk.Tk()                             
         self.ventana.title('DENTALMATIC')
         self.ventana.geometry('500x500')
-        #self.ventana.config(bg='blue')
         self.ventana.resizable(width=0, height=0)    
         utl.centrar_ventana(self.ventana, 600, 500)
         
