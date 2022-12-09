@@ -2,9 +2,8 @@ import tkinter as tk
 from tkinter.font import BOLD
 import util.generic as utl
 from tkinter import  Tk, Button, Entry, Label, ttk, PhotoImage
-from tkinter import  StringVar,Scrollbar,Frame
-#from conexion import*
-import time
+from tkinter import  StringVar, Scrollbar, Frame
+from forms.form_paciente import Paciente
 
 class MasterPanel:    
                                       
@@ -18,17 +17,7 @@ class MasterPanel:
         utl.centrar_ventana(self.ventana,900,600)            
         self.menu = True
         self.color = True
-        self.codigo = StringVar()
-        self.nombre = StringVar()
-        self.modelo = StringVar()
-        self.precio = StringVar()
-        self.cantidad = StringVar()
-        self.buscar = StringVar()
-        self.buscar_actualiza =  StringVar()
-        self.id = StringVar()
-
-		#self.base_datos = Registro_datos()
-
+        
         self.frame_inicio = Frame(self.ventana, bg='black', width=50, height=45)
         self.frame_inicio.grid_propagate(0)
         self.frame_inicio.grid(column=0, row = 0, sticky='nsew')
@@ -37,15 +26,14 @@ class MasterPanel:
         self.frame_menu.grid(column=0, row = 1, sticky='nsew')
         self.frame_top = Frame(self.ventana, bg='black', height = 50)
         self.frame_top.grid(column = 1, row = 0, sticky='nsew')
-        self.frame_principal = Frame(self.ventana, bg='black')
-        self.frame_principal.grid(column=1, row=1, sticky='nsew')		
+        self.frame_raiz = Frame(self.ventana, bg='black')
+        self.frame_raiz.grid(column=1, row=1, sticky='nsew')		
         self.ventana.columnconfigure(1, weight=1)
         self.ventana.rowconfigure(1, weight=1)
-        self.frame_principal.columnconfigure(0, weight=1)
-        self.frame_principal.rowconfigure(0, weight=1)
+        self.frame_raiz.columnconfigure(0, weight=1)
+        self.frame_raiz.rowconfigure(0, weight=1)
         
         self.widgets()
-
 
     def pantalla_inicial(self):
         self.paginas.select([self.frame_uno])
@@ -79,6 +67,10 @@ class MasterPanel:
 
     def pantalla_ajustes(self):
         self.paginas.select([self.frame_seis])
+    
+    def agregar_paciente(self):
+        Paciente()
+        #paciente.agregar_paciente
 
     def menu_lateral(self):
         if self.menu is True:
@@ -115,7 +107,8 @@ class MasterPanel:
         self.imagen_historia_clinica = PhotoImage(file ='./GUILogin/imagenes/historial.png')
         self.imagen_buscar = PhotoImage(file ='./GUILogin/imagenes/buscar.png')
         self.imagen_ajustes = PhotoImage(file ='./GUILogin/imagenes/configuracion.png')
-        self.imagen_paciente_nuevo = PhotoImage(file ='./GUILogin/imagenes/add.png')
+        self.imagen_agregar_paciente = PhotoImage(file ='./GUILogin/imagenes/agregar_paciente.png')
+        self.imagen_editar_paciente = PhotoImage(file ='./GUILogin/imagenes/editar_paciente.png')
 
         self.logo = PhotoImage(file ='./GUILogin/imagenes/logo1.png')
         self.imagen_uno = PhotoImage(file ='./GUILogin/imagenes/imagen_uno.png')
@@ -149,15 +142,15 @@ class MasterPanel:
         estilo_paginas.map("TNotebook.Tab", background=[("selected", 'black')], foreground=[("selected", 'gray')]);
 
 		#CREACCION DE LAS PAGINAS
-        self.paginas = ttk.Notebook(self.frame_principal , style= 'TNotebook') #, style = 'TNotebook'
+        self.paginas = ttk.Notebook(self.frame_raiz , style= 'TNotebook') #, style = 'TNotebook'
         self.paginas.grid(column=0,row=0, sticky='nsew')
-        self.frame_uno = Frame(self.paginas, bg='white') #color de fondo
+        self.frame_principal = Frame(self.paginas, bg='white') #color de fondo
         self.frame_dos = Frame(self.paginas, bg='white') #color de fondo
         self.frame_tres = Frame(self.paginas, bg='white')
         self.frame_cuatro = Frame(self.paginas, bg='white')
         self.frame_cinco = Frame(self.paginas, bg='white')
         self.frame_seis = Frame(self.paginas, bg='white')
-        self.paginas.add(self.frame_uno)
+        self.paginas.add(self.frame_principal)
         self.paginas.add(self.frame_dos)
         self.paginas.add(self.frame_tres)
         self.paginas.add(self.frame_cuatro)
@@ -170,13 +163,13 @@ class MasterPanel:
         self.titulo.pack(expand=1)
 
 		######################## VENTANA PRINCIPAL #################
-        Label(self.frame_uno, text= 'Menú Principal', bg='white', fg= 'black', font= ('Comic Sans MS', 20, 'bold')).pack(expand=1)
-        Label(self.frame_uno ,image= self.logo, bg='white').pack(expand=1)
+        Label(self.frame_principal, image= self.logo, bg='white').pack(expand= 1)
 
 		######################## MOSTRAR TODOS LOS PRODUCTOS DE LA BASE DE DATOS MYSQL #################
-        Label(self.frame_dos, text= 'Datos de MySQL', bg='white', fg= 'black', font= ('Comic Sans MS', 12, 'bold')).grid(column =0, row=0)
-        Button(self.frame_dos, text='ACTUALIZAR',fg='black' ,font = ('Arial', 11,'bold'), bg = 'green2', bd = 2, borderwidth=2).grid(column=1, row=0, pady=5)
-        Button(self.frame_dos, image= self.imagen_paciente_nuevo, text='NUEVO', fg='black' ,font = ('Arial', 11,'bold'), bg = 'green2', bd = 2, borderwidth=2).grid(column=2, row=0, pady=5)
+        Label(self.frame_dos, text= 'Listado de pacientes', bg='white', fg= 'black', font= ('Comic Sans MS', 12, 'bold')).grid(column =0, row=0)
+        Button(self.frame_dos, image= self.imagen_editar_paciente, text='ACTUALIZAR', fg='black', font = ('Arial', 11,'bold'), bg= 'green', bd= 2, borderwidth= 2).grid(column= 1, row= 0, pady= 5)
+        Label(self.frame_dos, text= 'Editar', bg='white', fg= 'black', font= ('Comic Sans MS', 12, 'bold')).grid(column= 1, row= 1)
+        Button(self.frame_dos, image= self.imagen_agregar_paciente, text='NUEVO', fg='black' ,font = ('Arial', 11,'bold'), bg= 'green', bd= 2, borderwidth= 2, command= self.agregar_paciente).grid(column= 2, row= 0, pady= 5)
         Label(self.frame_dos, text= 'Agregar', bg='white', fg= 'black', font= ('Comic Sans MS', 12, 'bold')).grid(column =2, row=1)
         #command= self.datos_totales, 
   

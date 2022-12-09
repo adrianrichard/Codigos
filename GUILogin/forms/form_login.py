@@ -5,7 +5,7 @@ import util.generic as utl
 from forms.form_master import MasterPanel
 from tkinter.messagebox import showinfo,showerror
 from bd.conexion import Conexion
-import sqlite3
+
 class App:
         
     def verificar(self):
