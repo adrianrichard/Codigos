@@ -1,10 +1,14 @@
 import sqlite3
+import os
 
 class Conexion():
-
-    def __init__(self):
+     
+    def comprobar_bd(self):
+        return os.path.isfile('./GUILogin/bd/consultorio.sqlite3')
+        
+    def conectar(self):        
         self.db = sqlite3.connect('./GUILogin/bd/consultorio.sqlite3')
-        self.cur = self.db.cursor()        
+        self.cur = self.db.cursor()
     
     def buscar_usuario(self, username, password):
         self.cur.execute('SELECT Nombre_usuario, Clave FROM Usuarios WHERE Nombre_usuario = ? AND Clave = ?', (username, password))

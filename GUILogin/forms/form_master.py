@@ -39,10 +39,10 @@ class MasterPanel:
         self.paginas.select([self.frame_uno])
 
     def pantalla_datos(self):
-        self.paginas.select([self.frame_dos])
-        self.frame_dos.columnconfigure(0, weight=1)
-        self.frame_dos.columnconfigure(1, weight=1)
-        self.frame_dos.rowconfigure(2, weight=1)
+        self.paginas.select([self.frame_pacientes])
+        self.frame_pacientes.columnconfigure(0, weight=1)
+        self.frame_pacientes.columnconfigure(1, weight=1)
+        self.frame_pacientes.rowconfigure(2, weight=1)
         self.frame_tabla_uno.columnconfigure(0, weight=1)
         self.frame_tabla_uno.rowconfigure(0, weight=1)
 
@@ -111,8 +111,6 @@ class MasterPanel:
         self.imagen_editar_paciente = PhotoImage(file ='./GUILogin/imagenes/editar_paciente.png')
 
         self.logo = PhotoImage(file ='./GUILogin/imagenes/logo1.png')
-        self.imagen_uno = PhotoImage(file ='./GUILogin/imagenes/imagen_uno.png')
-        self.imagen_dos= PhotoImage(file ='./GUILogin/imagenes/imagen_dos.png')        
 
         self.bt_inicio = Button(self.frame_inicio, image= self.imagen_inicio, bg='black', activebackground='black', bd=0, command = self.menu_lateral)
         self.bt_inicio.grid(column=0, row=0, padx=5, pady=10)
@@ -145,13 +143,13 @@ class MasterPanel:
         self.paginas = ttk.Notebook(self.frame_raiz , style= 'TNotebook') #, style = 'TNotebook'
         self.paginas.grid(column=0,row=0, sticky='nsew')
         self.frame_principal = Frame(self.paginas, bg='white') #color de fondo
-        self.frame_dos = Frame(self.paginas, bg='white') #color de fondo
+        self.frame_pacientes = Frame(self.paginas, bg='white') #color de fondo
         self.frame_tres = Frame(self.paginas, bg='white')
         self.frame_cuatro = Frame(self.paginas, bg='white')
         self.frame_cinco = Frame(self.paginas, bg='white')
         self.frame_seis = Frame(self.paginas, bg='white')
         self.paginas.add(self.frame_principal)
-        self.paginas.add(self.frame_dos)
+        self.paginas.add(self.frame_pacientes)
         self.paginas.add(self.frame_tres)
         self.paginas.add(self.frame_cuatro)
         self.paginas.add(self.frame_cinco)
@@ -159,18 +157,18 @@ class MasterPanel:
 
 		##############################         PAGINAS       #############################################
 		######################## FRAME TITULO #################
-        self.titulo = Label(self.frame_top, text= 'Consultorio Odóntologico MyM', bg='black', fg= 'white', font= ('Comic Sans MS', 15, 'bold'))
+        self.titulo = Label(self.frame_top, text= 'Consultorio Odóntologico MyM', bg='#1F704B', fg= 'white', font= ('Comic Sans MS', 15, 'bold'))
         self.titulo.pack(expand=1)
 
 		######################## VENTANA PRINCIPAL #################
         Label(self.frame_principal, image= self.logo, bg='white').pack(expand= 1)
 
-		######################## MOSTRAR TODOS LOS PRODUCTOS DE LA BASE DE DATOS MYSQL #################
-        Label(self.frame_dos, text= 'Listado de pacientes', bg='white', fg= 'black', font= ('Comic Sans MS', 12, 'bold')).grid(column =0, row=0)
-        Button(self.frame_dos, image= self.imagen_editar_paciente, text='ACTUALIZAR', fg='black', font = ('Arial', 11,'bold'), bg= 'green', bd= 2, borderwidth= 2).grid(column= 1, row= 0, pady= 5)
-        Label(self.frame_dos, text= 'Editar', bg='white', fg= 'black', font= ('Comic Sans MS', 12, 'bold')).grid(column= 1, row= 1)
-        Button(self.frame_dos, image= self.imagen_agregar_paciente, text='NUEVO', fg='black' ,font = ('Arial', 11,'bold'), bg= 'green', bd= 2, borderwidth= 2, command= self.agregar_paciente).grid(column= 2, row= 0, pady= 5)
-        Label(self.frame_dos, text= 'Agregar', bg='white', fg= 'black', font= ('Comic Sans MS', 12, 'bold')).grid(column =2, row=1)
+		######################## MOSTRAR TODOS LOS PACIENTES #################
+        Label(self.frame_pacientes, text= 'Listado de pacientes', bg='white', fg= 'black', font= ('Comic Sans MS', 12, 'bold')).grid(column =0, row=0)
+        Button(self.frame_pacientes, image= self.imagen_editar_paciente, text='ACTUALIZAR', fg='black', font = ('Arial', 11,'bold'), bg= '#1F704B', bd= 2, borderwidth= 2).grid(column= 1, row= 0, pady= 5)
+        Label(self.frame_pacientes, text= 'Editar', bg='white', fg= 'black', font= ('Comic Sans MS', 12, 'bold')).grid(column= 1, row= 1)
+        Button(self.frame_pacientes, image= self.imagen_agregar_paciente, text='NUEVO', fg='black' ,font = ('Arial', 11,'bold'), bg= '#1F704B', bd= 2, borderwidth= 2, command= self.agregar_paciente).grid(column= 2, row= 0, pady= 5)
+        Label(self.frame_pacientes, text= 'Agregar', bg='white', fg= 'black', font= ('Comic Sans MS', 12, 'bold')).grid(column =2, row=1)
         #command= self.datos_totales, 
   
 
@@ -183,7 +181,7 @@ class MasterPanel:
         estilo_tabla.configure('TScrollbar', arrowcolor = 'DarkOrchid1', bordercolor  ='black', troughcolor= 'DarkOrchid1', background ='white')
 
 		#TABLA UNO
-        self.frame_tabla_uno = Frame(self.frame_dos, bg='gray90')
+        self.frame_tabla_uno = Frame(self.frame_pacientes, bg='gray90')
         self.frame_tabla_uno.grid(columnspan=3, row=2, sticky='nsew')
         self.tabla_uno = ttk.Treeview(self.frame_tabla_uno)
         self.tabla_uno.grid(column=0, row=0, sticky='nsew')
@@ -208,28 +206,27 @@ class MasterPanel:
 #		self.tabla_uno.bind("<<TreeviewSelect>>", self.obtener_fila)
 
 		######################## REGISTRAR  NUEVOS PRODUCTOS #################
-        Label(self.frame_tres, text = 'Agregar Nuevos Datos', fg='blue', bg ='white', font=('Comic Sans MS',24,'bold')).grid(columnspan=2, column=0,row=0, pady=5)
+        Label(self.frame_tres, text = 'Agregar Nuevos Datos', fg='blue', bg ='white', font=('Comic Sans MS',24,'bold')).grid(columnspan=2, column=0, row=0, pady=5)
         Label(self.frame_tres, text = 'Codigo', fg='navy', bg ='white', font=('Comic Sans MS',13,'bold')).grid(column=0,row=1, pady=15, padx=5)
         Label(self.frame_tres, text = 'Nombre', fg='navy', bg ='white', font=('Comic Sans MS',13,'bold')).grid(column=0,row=2, pady=15)
         Label(self.frame_tres, text = 'Modelo', fg='navy', bg ='white', font=('Comic Sans MS',13,'bold')).grid(column=0,row=3, pady=15)
         Label(self.frame_tres, text = 'Precio', fg='navy', bg ='white', font=('Comic Sans MS',13,'bold')).grid(column=0,row=4, pady=15)
         Label(self.frame_tres, text = 'Cantidad', fg='navy', bg ='white', font=('Comic Sans MS',13,'bold')).grid(column=0,row=5, pady=15)  ##E65561
 
-        Entry(self.frame_tres, textvariable=self.codigo , font=('Comic Sans MS', 12), highlightbackground = "DarkOrchid1", highlightcolor= "green2", highlightthickness=5).grid(column=1, row=1)
-        Entry(self.frame_tres, textvariable=self.nombre , font=('Comic Sans MS', 12), highlightbackground = "DarkOrchid1", highlightcolor= "green2", highlightthickness=5).grid(column=1, row=2)
-        Entry(self.frame_tres, textvariable=self.modelo , font=('Comic Sans MS', 12), highlightbackground = "DarkOrchid1", highlightcolor= "green2", highlightthickness=5).grid(column=1, row=3)
-        Entry(self.frame_tres, textvariable=self.precio , font=('Comic Sans MS', 12), highlightbackground = "DarkOrchid1", highlightcolor= "green2", highlightthickness=5).grid(column=1, row=4)
-        Entry(self.frame_tres, textvariable=self.cantidad , font=('Comic Sans MS', 12), highlightbackground = "DarkOrchid1", highlightcolor= "green2", highlightthickness=5).grid(column=1, row=5)
+        #Entry(self.frame_tres, textvariable=self.codigo , font=('Comic Sans MS', 12), highlightbackground = "DarkOrchid1", highlightcolor= "green2", highlightthickness=5).grid(column=1, row=1)
+       # Entry(self.frame_tres, textvariable=self.nombre , font=('Comic Sans MS', 12), highlightbackground = "DarkOrchid1", highlightcolor= "green2", highlightthickness=5).grid(column=1, row=2)
+        #Entry(self.frame_tres, textvariable=self.modelo , font=('Comic Sans MS', 12), highlightbackground = "DarkOrchid1", highlightcolor= "green2", highlightthickness=5).grid(column=1, row=3)
+        #Entry(self.frame_tres, textvariable=self.precio , font=('Comic Sans MS', 12), highlightbackground = "DarkOrchid1", highlightcolor= "green2", highlightthickness=5).grid(column=1, row=4)
+       # Entry(self.frame_tres, textvariable=self.cantidad , font=('Comic Sans MS', 12), highlightbackground = "DarkOrchid1", highlightcolor= "green2", highlightthickness=5).grid(column=1, row=5)
 
 		#Button(self.frame_tres,command= self.agregar_datos, text='REGISTRAR', font=('Arial',10,'bold'), bg='magenta2').grid(column=3,row=6, pady=10, padx=4)
-        Label(self.frame_tres, image= self.imagen_uno, bg= 'white').grid(column= 3, rowspan= 5, row = 0, padx= 50)
         self.aviso_guardado = Label(self.frame_tres, bg= 'white', font=('Comic Sans MS', 12), fg='black')
         self.aviso_guardado.grid(columnspan= 2 , column =0, row = 6, padx= 5)
 
 		########################   ACTUALIZAR LOS PRODUCTOS REGISTRADOS     #################
         Label(self.frame_cuatro, text = 'Actualizar Datos',fg='blue', bg ='white', font=('Comic Sans MS',24,'bold')).grid(columnspan=4, row=0)
         Label(self.frame_cuatro, text = 'Ingrese el nombre del producto a actualizar', fg='black', bg ='white', font=('Comic Sans MS',12)).grid(columnspan=2, row=1)
-        Entry(self.frame_cuatro, textvariable= self.buscar_actualiza, font=('Comic Sans MS', 12), highlightbackground = "magenta2", width=12, highlightthickness=5).grid(column=2, row=1, padx=5)
+        #Entry(self.frame_cuatro, textvariable= self.buscar_actualiza, font=('Comic Sans MS', 12), highlightbackground = "magenta2", width=12, highlightthickness=5).grid(column=2, row=1, padx=5)
 		#Button(self.frame_cuatro, command= self.actualizar_datos, text='BUSCAR', font=('Arial',12,'bold'), bg='deep sky blue').grid(column=3,row=1, pady=5, padx=15)
         self.aviso_actualizado = Label(self.frame_cuatro, fg='black', bg ='white', font=('Comic Sans MS',12,'bold'))
         self.aviso_actualizado.grid(columnspan= 2, row=7, pady=10, padx=5)
@@ -245,10 +242,7 @@ class MasterPanel:
         Entry(self.frame_cuatro, textvariable=self.modelo, font=('Comic Sans MS', 12), highlightbackground = "deep sky blue", highlightcolor= "green", highlightthickness=5).grid(column=1,row=4)
         Entry(self.frame_cuatro, textvariable=self.precio, font=('Comic Sans MS', 12), highlightbackground = "deep sky blue", highlightcolor= "green", highlightthickness=5).grid(column=1,row=5)
         Entry(self.frame_cuatro, textvariable=self.cantidad, font=('Comic Sans MS', 12), highlightbackground = "deep sky blue", highlightcolor= "green", highlightthickness=5).grid(column=1,row=6)
-
-		#Button(self.frame_cuatro,command= self.actualizar_tabla, text='ACTUALIZAR', font=('Arial',12,'bold'), bg='magenta2').grid(column=2, columnspan= 2 ,row=7, pady=2)
-        Label(self.frame_cuatro, image= self.imagen_dos, bg='white').grid(column= 2,columnspan= 2, rowspan= 5, row = 1, padx=2)
-
+		
 		######################## BUSCAR y ELIMINAR DATOS #################
         Label(self.frame_cinco, text = 'Buscar y Eliminar Datos', fg='blue', bg ='white', font=('Comic Sans MS',24,'bold')).grid(columnspan= 4,  row=0,sticky='nsew',padx=2)
         Entry(self.frame_cinco, textvariable= self.buscar, font=('Comic Sans MS', 12),highlightbackground = "DarkOrchid1", highlightcolor= "deep sky blue", highlightthickness=5).grid(column=0, row=1, sticky='nsew', padx=2)

@@ -58,7 +58,9 @@ class Paciente:
         Label(self.frame_principal, text= 'Eliminar', bg= 'black', fg= 'white', font= ('Comic Sans MS', 12, 'bold')).grid(column=1, row=4, pady=20, padx=2)
         Label(self.frame_principal, text= 'Versión', bg= 'black', fg= 'white', font= ('Comic Sans MS', 12, 'bold')).grid(column=1, row=5, pady=20, padx=2)
         self.ventana.mainloop()
-    
+
+if __name__ == "__main__":
+    Paciente()
     #def agregar_paciente():
         
 
