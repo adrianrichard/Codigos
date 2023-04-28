@@ -8,26 +8,28 @@ from bd.conexion import Conexion
 class Paciente:    
                                       
     def __init__(self):        
-        #self.ventana = tk.Tk()
-        self.ventana= tk.Toplevel()
-        self.ventana.title('DentalMatic')
-       # w, h = self.ventana.winfo_screenwidth(), self.ventana.winfo_screenheight()                                    
-        self.ventana.geometry('1000x500')
-        self.ventana.config(bg='#fcfcfc')
-        self.ventana.resizable(width=0, height=0)
-        utl.centrar_ventana(self.ventana,900,600)
+        self.frame_paciente= tk.Toplevel()
+        self.frame_paciente.grab_set_global() # Obliga a las ventanas estar deshabilitadas y deshabilitar todos los eventos e interacciones con la ventana
+        self.frame_paciente.focus_set() # Mantiene el foco cuando se abre la ventana.
+        self.frame_paciente.title('DentalMatic')
+        self.frame_paciente.geometry('1000x500')
+        self.frame_paciente.config(bg='#fcfcfc')
+        self.frame_paciente.resizable(width= 0, height= 0)
+        utl.centrar_ventana(self.frame_paciente, 900, 600)
         self.menu = True
         self.color = True
-        self.frame_top = Frame(self.ventana, bg='black', height = 50)
-        self.frame_top.grid(column = 1, row = 0, sticky='nsew')
-        self.frame_principal = Frame(self.ventana, bg='white')
-        self.frame_principal.grid(column=1, row=1, sticky='nsew')		
-        self.ventana.columnconfigure(1, weight=1)
-        self.ventana.rowconfigure(1, weight=1)
-        self.frame_principal.columnconfigure(1, weight=1)
-        self.frame_principal.rowconfigure(1, weight=1)
-        self.titulo = Label(self.frame_top, text= 'Consultorio Odóntologico MyM', bg='black', fg= 'white', font= ('Comic Sans MS', 15, 'bold'))
-        self.titulo.pack(expand=1)       
+        self.frame_top = Frame(self.frame_paciente, bg= 'black', height= 50)
+
+        self.frame_top.grid(column= 1, row= 0, sticky= 'nsew')        
+        self.frame_principal = Frame(self.frame_paciente, bg= 'white')
+        self.frame_principal.grid(column= 1, row= 1, sticky= 'nsew')		
+        self.frame_paciente.columnconfigure(1, weight= 1)
+        self.frame_paciente.rowconfigure(1, weight= 1)
+        self.frame_principal.columnconfigure(1, weight= 1)
+        self.frame_principal.rowconfigure(1, weight= 1)
+        self.titulo = Label(self.frame_top, text= 'Consultorio Odóntologico MyM', bg= 'black', fg= 'white', font= ('Comic Sans MS', 15, 'bold')).grid(column= 1, row=0, pady= 20, padx= 10)
+        Button(self.frame_top, text= 'Cerrar', fg= 'white', bg= 'black', activebackground= 'black', bd= 0, command= self.frame_paciente.destroy).grid(column= 2, row=0, pady= 20, padx= 10)
+
 
     #def pantalla_inicial(self):
     
@@ -57,7 +59,7 @@ class Paciente:
         Label(self.frame_principal, text= 'Historia \nClinica', bg= 'black', fg= 'white', font= ('Comic Sans MS', 12, 'bold')).grid(column=1, row=3, pady=20, padx=2)
         Label(self.frame_principal, text= 'Eliminar', bg= 'black', fg= 'white', font= ('Comic Sans MS', 12, 'bold')).grid(column=1, row=4, pady=20, padx=2)
         Label(self.frame_principal, text= 'Versión', bg= 'black', fg= 'white', font= ('Comic Sans MS', 12, 'bold')).grid(column=1, row=5, pady=20, padx=2)
-        self.ventana.mainloop()
+        self.frame_paciente.mainloop()
 
 if __name__ == "__main__":
     Paciente()

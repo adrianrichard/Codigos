@@ -1,0 +1,71 @@
+#: include kv/dashboard.kv
+#: include kv/settingsscreen.kv
+#: include kv/pickersscreen.kv
+
+
+NavigationLayout:
+    id: nav_layout
+
+    ScreenManager:
+
+        Screen:
+
+            BoxLayout:
+                orientation: 'vertical'
+
+                MDToolbar:
+                    title: app.title
+                    elevation: 10
+                    left_action_items: [["menu", lambda x: nav_drawer.set_state()]]
+
+                ScreenManager:
+                    id: screen_manager
+                    DashBoard:
+                        id: dashboard
+                        name: "dashboard"
+                    SettingsScreen:
+                        id: settings_screen
+                        name: "settings_screen"
+                    PickersScreen:
+                        id: pickers_screen
+                        name: "pickers_screen"
+
+    MDNavigationDrawer:
+        id: nav_drawer
+
+        BoxLayout:
+            orientation: 'vertical'
+            padding: "8dp"
+            spacing: "8dp"
+
+            Image:
+
+                source: "resources/logo.png"
+
+            ScrollView:
+
+                MDList:
+
+                    OneLineIconListItem:
+                        text: "DashBoard"
+                        on_release:
+                            screen_manager.current = "dashboard"
+                            nav_drawer.set_state()
+                        IconLeftWidget:
+                            icon: "view-dashboard"
+
+                    OneLineIconListItem:
+                        text: "Pickers"
+                        on_release:
+                            screen_manager.current = "pickers_screen"
+                            nav_drawer.set_state()
+                        IconLeftWidget:
+                            icon: "calendar-edit"
+
+                    OneLineIconListItem:
+                        text: "Ajustes"
+                        on_release:
+                            screen_manager.current = "settings_screen"
+                            nav_drawer.set_state()
+                        IconLeftWidget:
+                            icon: "settings"
