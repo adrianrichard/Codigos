@@ -22,8 +22,9 @@ def load_images():
     images_files = os.listdir(dir_path)
     for r in range(0, len(images_files)):
         images_list.append([
-            ImageTk.PhotoImage(Image.open(dir_path + '/' + images_files[r]).resize((50, 50), Image.ANTIALIAS)),
-            ImageTk.PhotoImage(Image.open(dir_path + '/'+ images_files[r]).resize((480,360), Image.ANTIALIAS))
+            ImageTk.PhotoImage(Image.open(dir_path + '/' + images_files[r]).resize((50, 50), Image.Resampling.LANCZOS)),
+            ImageTk.PhotoImage(Image.open(dir_path + '/'+ images_files[r]).resize((480,360), Image.Resampling.LANCZOS))
+        
         ])
         images_vars.append(f'imag_{r}')
     
