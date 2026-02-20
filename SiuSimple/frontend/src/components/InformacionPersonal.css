@@ -1,0 +1,297 @@
+.info-personal-container {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.info-personal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #600060;
+}
+.info-personal-header > .btn-editar {
+  flex-shrink: 0;  /* No se encoge */
+  flex-grow: 0;    /* No crece */
+  width: auto;     /* Ancho automático */
+}
+.info-personal-header h3 {
+  margin: 0;
+  color: #0a5cad;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.acciones-edicion {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.btn-editar, .btn-cancelar, .btn-guardar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: auto;
+}
+
+.btn-editar {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.9rem;
+  min-width: 90px;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+.btn-editar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.3);
+}
+
+.btn-cancelar {
+  background: white;
+  color: #6c757d;
+  border: 1px solid #dee2e6;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.9rem;
+}
+
+.btn-cancelar:hover:not(:disabled) {
+  background: #f8f9fa;
+  border-color: #adb5bd;
+}
+
+.btn-guardar {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.2);
+}
+
+.btn-guardar:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(40, 167, 69, 0.3);
+}
+
+.btn-guardar:disabled,
+.btn-cancelar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.info-personal-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.2rem;
+}
+
+.campo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.campo-form label {
+  color: #6c757d;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.campo-valor {
+  color: #210dda;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed #e9ecef;
+}
+
+.campo-form input {
+  padding: 0.6rem;
+  border: 1px solid #1f5fa0;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: all 0.3s;
+  background: white;
+}
+
+.campo-form input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.campo-form input:hover {
+  border-color: #adb5bd;
+}
+
+.nota-edicion {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e9ecef;
+  text-align: center;
+  color: #6c757d;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .info-personal-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  
+  .acciones-edicion {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  
+  .info-personal-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .info-personal-container {
+    padding: 1rem;
+  }
+  
+  .acciones-edicion {
+    flex-direction: column;
+  }
+  
+  .btn-cancelar,
+  .btn-guardar {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .campo-form input {
+    font-size: 16px; /* Evita zoom en iOS */
+  }
+}
+/* Mensajes de éxito y error */
+.mensaje-exito {
+  background: linear-gradient(135deg, #d4edda, #c3e6cb);
+  color: #155724;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #28a745;
+  font-weight: 500;
+  animation: slideDown 0.3s ease;
+  text-align: center;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.2);
+}
+
+.mensaje-error {
+  background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+  color: #721c24;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #dc3545;
+  font-weight: 500;
+  animation: slideDown 0.3s ease;
+  text-align: center;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.2);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mejoras en los botones */
+.header-icon {
+  margin-right: 0.5rem;
+}
+
+/* Responsive para los mensajes */
+@media (max-width: 480px) {
+  .mensaje-exito,
+  .mensaje-error {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  .btn-editar,
+  .btn-cancelar,
+  .btn-guardar {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+.campo-form input {
+  padding: 0.6rem;
+  border: 1px solid #1f5fa0;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: all 0.3s;
+  background: white;
+  color: #2c3e50;  /* 🔥 Texto gris oscuro - visible */
+}
+
+.campo-form input::placeholder {
+  color: #adb5bd;  /* Gris claro para el placeholder */
+  opacity: 1;
+}
+
+/* Loading spinner */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f0f0f0;
+  border-top-color: #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* DNI no editable */
+.campo-form .campo-valor:first-of-type {
+  font-weight: 600;
+  color: #2c3e50;
+  background: #f8f9fa;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  display: inline-block;
+}

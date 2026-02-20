@@ -1,0 +1,371 @@
+.admin-alumnos-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.admin-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: #2c3e50;
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  margin: 0;
+}
+
+.header-icon {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+}
+
+.btn-nuevo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.2);
+}
+
+.btn-nuevo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(40, 167, 69, 0.3);
+}
+
+.filtros-container {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.buscador-input {
+  flex: 1;
+  min-width: 250px;
+  padding: 0.8rem 1rem;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.3s;
+}
+
+.buscador-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.resultados-count {
+  background: #f8f9fa;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  color: #6c757d;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Grid de alumnos */
+.alumnos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.alumno-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.alumno-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.alumno-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.alumno-avatar {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.alumno-info {
+  flex: 1;
+}
+
+.alumno-info h3 {
+  margin: 0 0 0.3rem 0;
+  color: #2c3e50;
+  font-size: 1.1rem;
+}
+
+.alumno-dni {
+  margin: 0;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.alumno-footer {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e9ecef;
+}
+
+.btn-editar,
+.btn-eliminar {
+  flex: 1;
+  padding: 0.6rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+.btn-editar {
+  background: #f8f9fa;
+  color: #667eea;
+  border: 1px solid #dee2e6;
+}
+
+.btn-editar:hover {
+  background: #e9ecef;
+  border-color: #667eea;
+}
+
+.btn-eliminar {
+  background: #fff5f5;
+  color: #dc3545;
+  border: 1px solid #ffc9c9;
+}
+
+.btn-eliminar:hover {
+  background: #ffe3e3;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-container {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.modal-container h3 {
+  margin: 0 0 1.5rem 0;
+  color: #2c3e50;
+  font-size: 1.3rem;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #6c757d;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: all 0.3s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-group input:disabled {
+  background: #f8f9fa;
+  cursor: not-allowed;
+}
+
+.form-hint {
+  display: block;
+  margin-top: 0.3rem;
+  color: #6c757d;
+  font-size: 0.8rem;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.modal-actions button {
+  flex: 1;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+/* Mensajes */
+.mensaje {
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  animation: slideDown 0.3s ease;
+}
+
+.mensaje.success {
+  background: #d4edda;
+  color: #155724;
+  border-left: 4px solid #28a745;
+}
+
+.mensaje.error {
+  background: #f8d7da;
+  color: #721c24;
+  border-left: 4px solid #dc3545;
+}
+
+/* Loading */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f0f0f0;
+  border-top-color: #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .btn-nuevo {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .filtros-container {
+    flex-direction: column;
+  }
+  
+  .buscador-input {
+    width: 100%;
+  }
+  
+  .alumnos-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-container {
+    padding: 1.5rem;
+  }
+  
+  .modal-actions {
+    flex-direction: column;
+  }
+  
+  .alumno-footer {
+    flex-direction: column;
+  }
+  
+  .btn-editar,
+  .btn-eliminar {
+    width: 100%;
+  }
+}

@@ -1,0 +1,599 @@
+.historial-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.historial-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.historial-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: #2c3e50;
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  margin: 0;
+}
+
+.header-icon {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+}
+
+.filtros-container {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.filtro-select {
+  padding: 0.6rem 1rem;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #2c3e50;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s;
+  min-width: 150px;
+}
+
+.filtro-select:hover {
+  border-color: #667eea;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
+}
+
+.filtro-select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Estadísticas generales */
+.estadisticas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.estadistica-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  transition: transform 0.3s;
+}
+
+.estadistica-card:hover {
+  transform: translateY(-5px);
+}
+
+.estadistica-valor {
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.estadistica-label {
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  opacity: 0.9;
+}
+
+/* Sección de materias */
+.materias-section {
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e9ecef;
+  font-size: clamp(1.1rem, 3vw, 1.3rem);
+}
+
+.section-icon {
+  font-size: 1.3rem;
+}
+
+/* Grid de materias */
+.materias-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.materia-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s;
+  border-left: 4px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.materia-card.aprobada {
+  border-left-color: #28a745;
+  background: linear-gradient(to right, white, #f8fff9);
+}
+
+.materia-card.regular {
+  border-left-color: #ffc107;
+  background: linear-gradient(to right, white, #fff9e6);
+}
+
+.materia-card.cursando {
+  border-left-color: #17a2b8;
+  background: linear-gradient(to right, white, #e6f7ff);
+}
+
+.materia-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.materia-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.materia-codigo {
+  background: #e9ecef;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: #495057;
+  font-weight: 600;
+}
+
+.materia-estado-badge {
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.materia-estado-badge.aprobada {
+  background: #d4edda;
+  color: #155724;
+}
+
+.materia-estado-badge.regular {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.materia-estado-badge.cursando {
+  background: #d1ecf1;
+  color: #0c5460;
+}
+
+.materia-nombre {
+  color: #2c3e50;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.materia-detalles {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.detalle-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.detalle-icon {
+  font-size: 1rem;
+  min-width: 20px;
+}
+
+.materia-nota {
+  background: #f8f9fa;
+  padding: 0.8rem;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 1rem 0;
+  border: 1px solid #e9ecef;
+}
+
+.materia-nota.aprobada {
+  background: #d4edda;
+  color: #155724;
+  border-color: #c3e6cb;
+}
+
+.correlativas-info {
+  background: #f8f9fa;
+  padding: 0.8rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: #6c757d;
+  border: 1px dashed #dee2e6;
+}
+
+.correlativas-titulo {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: #495057;
+}
+
+.correlativas-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.correlativa-item {
+  background: white;
+  padding: 0.2rem 0.6rem;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  border: 1px solid #dee2e6;
+  color: #495057;
+}
+
+/* Promedio general */
+.promedio-section {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.promedio-info h3 {
+  color: #2c3e50;
+  margin-bottom: 0.3rem;
+  font-size: 1.1rem;
+}
+
+.promedio-info p {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.promedio-valor {
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  font-weight: 700;
+  color: #667eea;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  background-color: #f0f3ff;
+}
+
+/* Estado vacío */
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  background: white;
+  border-radius: 12px;
+  color: #6c757d;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.empty-state h3 {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+/* Loading */
+.loading-historial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  color: #6c757d;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f0f0f0;
+  border-top-color: #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .historial-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .filtros-container {
+    width: 100%;
+  }
+  
+  .filtro-select {
+    flex: 1;
+    min-width: auto;
+  }
+  
+  .materias-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .promedio-section {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .promedio-info {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .historial-container {
+    padding: 0.5rem;
+  }
+  
+  .estadisticas-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .materia-card {
+    padding: 1rem;
+  }
+  
+  .materia-header {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+  
+  .materia-codigo {
+    align-self: flex-start;
+  }
+  
+  .materia-estado-badge {
+    align-self: flex-start;
+  }
+  
+  .detalle-item {
+    font-size: 0.85rem;
+  }
+  
+  .empty-state {
+    padding: 2rem 1rem;
+  }
+  
+  .empty-icon {
+    font-size: 2.5rem;
+  }
+}
+
+/* Impresión */
+@media print {
+  .filtros-container,
+  .btn-logout,
+  .navbar {
+    display: none;
+  }
+  
+  .historial-container {
+    padding: 0;
+  }
+  
+  .materia-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
+/* ===== TABLA DE MATERIAS ===== */
+.tabla-container {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  overflow-x: auto;
+}
+
+.materias-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.materias-tabla th {
+  background: #f8f9fa;
+  color: #2c3e50;
+  font-weight: 600;
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.materias-tabla td {
+  padding: 1rem;
+  border-bottom: 1px solid #e9ecef;
+  color: #495057;
+}
+
+.materias-tabla tbody tr:hover {
+  background: #f8f9fa;
+}
+
+/* Estados de las filas */
+.fila-aprobada {
+  background-color: #f8fff9;
+}
+
+.fila-regular {
+  background-color: #fff9e6;
+}
+
+.fila-cursando {
+  background-color: #f0f7ff;
+}
+
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.badge-aprobada {
+  background: #d4edda;
+  color: #155724;
+}
+
+.badge-regular {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.badge-cursando {
+  background: #d1ecf1;
+  color: #0c5460;
+}
+
+/* Notas */
+.nota {
+  font-weight: 600;
+  text-align: center;
+}
+
+.nota.aplazo {
+  color: #dc3545;
+  font-weight: 700;
+}
+
+/* Celdas centradas */
+.centrado {
+  text-align: center;
+}
+
+/* Código */
+.codigo {
+  font-family: monospace;
+  font-weight: 600;
+  color: #6c757d;
+}
+
+/* Nombre */
+.nombre {
+  font-weight: 500;
+}
+
+/* Estadísticas cards */
+.estadisticas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.estadistica-card {
+  color: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.estadistica-card:hover {
+  transform: translateY(-5px);
+}
+
+.estadistica-valor {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.estadistica-label {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.estadistica-detalle {
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .materias-tabla {
+    font-size: 0.85rem;
+  }
+  
+  .materias-tabla th,
+  .materias-tabla td {
+    padding: 0.8rem 0.5rem;
+  }
+  
+  .badge {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .materias-tabla {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  .estadisticas-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,21 @@
+.finales-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.finales-container h2 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+.finales-container p {
+  color: #6c757d;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
